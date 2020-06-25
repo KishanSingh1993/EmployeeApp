@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import in.ktechnos.testapp.viewModel.LoginViewModel;
+import in.ktechnos.testapp.viewModel.MainViewModel;
 
 class MainViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
@@ -20,6 +21,6 @@ class MainViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new LoginViewModel(context);
+        return (T) new MainViewModel(context);
     }
 }
