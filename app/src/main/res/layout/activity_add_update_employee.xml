@@ -34,6 +34,7 @@
         android:textColorHint="#fff"
         android:singleLine="true"
         android:maxLines="1"
+        android:inputType="textEmailAddress"
         android:textSize="@dimen/add_edit_textsize" />
 
 
@@ -42,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Mobile"
+        android:inputType="number"
         android:singleLine="true"
         android:maxLines="1"
         android:padding="@dimen/view_padding"

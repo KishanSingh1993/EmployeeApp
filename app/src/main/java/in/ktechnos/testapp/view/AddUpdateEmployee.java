@@ -76,23 +76,31 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
             }
 
 
-        addUpdateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                employeeData.open();
+        addUpdateButton.setOnClickListener(this);
+    }
 
-                        newEmployee.setFirstName(firstNameEditText.getText().toString());
-                        newEmployee.setEmail(lastNameEditText.getText().toString());
-                        newEmployee.setMobile(deptEditText.getText().toString());
+    private void addEmp(){
 
-                        employeeData.addEmployee(newEmployee);
-                        employeeData.close();
-                        Toast.makeText(AddUpdateEmployee.this, "Employee " + newEmployee.getFirstName() +
-                                " is added successfully!", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(AddUpdateEmployee.this, MainActivity.class);
-                        startActivity(i);
-            }
-        });
+        Log.d("Name",firstNameEditText.getText().toString());
+
+        if (!firstNameEditText.getText().toString().equals("") || !lastNameEditText.getText().toString().equals("") || !deptEditText.getText().toString().equals("")) {
+            employeeData.open();
+
+            newEmployee.setFirstName(firstNameEditText.getText().toString());
+            newEmployee.setEmail(lastNameEditText.getText().toString());
+            newEmployee.setMobile(deptEditText.getText().toString());
+
+            employeeData.addEmployee(newEmployee);
+            employeeData.close();
+            Toast.makeText(AddUpdateEmployee.this, "Employee " + newEmployee.getFirstName() +
+                    " is added successfully!", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(AddUpdateEmployee.this, MainActivity.class);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(this, "All Fields are Required", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     private void initializeEmployee(long empId) {
@@ -127,7 +135,12 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){}
+        switch (view.getId()){
+
+            case R.id.button_add_update_employee:
+                addEmp();
+                break;
+        }
 
     }
 }
