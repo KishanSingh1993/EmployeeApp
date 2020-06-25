@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.MainActivity"/>
         <activity android:name=".view.AddUpdateEmployee"/>
+        <activity android:name=".view.ViewAllEmployees"/>
         <activity android:name=".view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

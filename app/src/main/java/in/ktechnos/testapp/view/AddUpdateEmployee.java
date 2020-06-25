@@ -60,11 +60,6 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
         oldEmployee = new Employee();
         firstNameEditText = findViewById(R.id.edit_text_first_name);
         lastNameEditText = findViewById(R.id.edit_text_last_name);
-        hireDateEditText = findViewById(R.id.edit_text_hire_date);
-        radioGroup = findViewById(R.id.radio_gender);
-        femaleRadioButton = findViewById(R.id.radio_female);
-        maleRadioButton = findViewById(R.id.radio_male);
-        calendarImage = findViewById(R.id.image_view_hire_date);
         deptEditText = findViewById(R.id.edit_text_dept);
         addUpdateButton = findViewById(R.id.button_add_update_employee);
         employeeData = new EmployeeOperations(this);
@@ -79,22 +74,7 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
 
                 initializeEmployee(empId);
             }
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.radio_male) {
-                    newEmployee.setGender("M");
-                    if (mode.equals("Update")) {
-                        oldEmployee.setGender("M");
-                    }
-                } else if (i == R.id.radio_female) {
-                    newEmployee.setGender("F");
-                    if (mode.equals("Update")) {
-                        oldEmployee.setGender("F");
-                    }
-                }
-            }
-        });
+
         calendarImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +128,7 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
             firstNameEditText.setText(oldEmployee.getFirstName());
             lastNameEditText.setText(oldEmployee.getLastName());
             hireDateEditText.setText(oldEmployee.getHireDate());
-            radioGroup.check(oldEmployee.getGender().equals("M") ? R.id.radio_male : R.id.radio_female);
+            //radioGroup.check(oldEmployee.getGender().equals("M") ? R.id.radio_male : R.id.radio_female);
             deptEditText.setText(oldEmployee.getDept());
         } else {
             Toast.makeText(this, "Employee not Present", Toast.LENGTH_SHORT).show();
