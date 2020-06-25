@@ -4,21 +4,20 @@ public class Employee {
 
     private long empId;
     private String firstName;
-    private String lastName;
+    private String Email;
     private String gender;
     private String hireDate;
-    private String dept;
+    private String Mobile;
 
     public Employee() {
     }
 
-    public Employee(long empId, String firstName, String lastName, String gender, String hireDate, String dept) {
+    public Employee(long empId, String firstName, String emial,String mobile) {
         this.empId = empId;
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.hireDate = hireDate;
-        this.dept = dept;
+        this.Email = emial;
+
+        this.Mobile = mobile;
     }
 
     public long getEmpId() {
@@ -37,12 +36,20 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getMobile() {
+        return Mobile;
+    }
+
+    public void setMobile(String mobile) {
+        Mobile = mobile;
     }
 
     public String getGender() {
@@ -61,17 +68,10 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    public String getDept() {
-        return dept;
-    }
 
-    public void setDept(String dept) {
-        this.dept = dept;
-    }
 
     public String toString() {
-        return "Emp id: " + getEmpId() + "\n" + "Name: " + getFirstName()+ " " + getLastName() + " \n"+"Gender: "+getGender()
-               +"\n" + "Hire Date: " + getHireDate() + "\n" + "Department: " + getDept();
+        return "Emp id: " + getEmpId() + "\n" + "Name: " + getFirstName()+"\n" + " Email:" + getEmail() + "\n" + "Mobile: " + getMobile();
     }
 
 }

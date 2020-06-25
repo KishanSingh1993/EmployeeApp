@@ -25,10 +25,8 @@ public class EmployeeOperations {
     private static final String[] allColumns = {
             EmployeeDBHandler.COLUMN_ID,
             EmployeeDBHandler.COLUMN_FIRST_NAME,
-            EmployeeDBHandler.COLUMN_LAST_NAME,
-            EmployeeDBHandler.COLUMN_GENDER,
-            EmployeeDBHandler.COLUMN_HIRE_DATE,
-            EmployeeDBHandler.COLUMN_DEPT
+            EmployeeDBHandler.COLUMN_EMAIL,
+            EmployeeDBHandler.COLUMN_MOBILE
     };
 
     public EmployeeOperations(Context context) {
@@ -49,10 +47,8 @@ public class EmployeeOperations {
     public Employee addEmployee(Employee employee) {
         ContentValues values = new ContentValues();
         values.put(EmployeeDBHandler.COLUMN_FIRST_NAME, employee.getFirstName());
-        values.put(EmployeeDBHandler.COLUMN_LAST_NAME, employee.getLastName());
-        values.put(EmployeeDBHandler.COLUMN_GENDER, employee.getGender());
-        values.put(EmployeeDBHandler.COLUMN_HIRE_DATE, employee.getHireDate());
-        values.put(EmployeeDBHandler.COLUMN_DEPT, employee.getDept());
+        values.put(EmployeeDBHandler.COLUMN_EMAIL, employee.getEmail());
+        values.put(EmployeeDBHandler.COLUMN_MOBILE, employee.getMobile());
 
         long insertId = database.insert(EmployeeDBHandler.TABLE_EMPLOYEES, null, values);
         employee.setEmpId(insertId);
@@ -73,7 +69,7 @@ public class EmployeeOperations {
             }
             Log.d(TAG, "getEmployee: " + cursor);
             e = new Employee(Long.parseLong(cursor.getString(0)), cursor.getString(1), cursor.getString(2),
-                    cursor.getString(3), cursor.getString(4), cursor.getString(5));
+                    cursor.getString(3));
         } catch (CursorIndexOutOfBoundsException a) {
             e = null;
         }
@@ -92,10 +88,8 @@ public class EmployeeOperations {
                 Employee employee = new Employee();
                 employee.setEmpId(cursor.getLong(cursor.getColumnIndex(EmployeeDBHandler.COLUMN_ID)));
                 employee.setFirstName(cursor.getString(cursor.getColumnIndex(EmployeeDBHandler.COLUMN_FIRST_NAME)));
-                employee.setLastName(cursor.getString(cursor.getColumnIndex(EmployeeDBHandler.COLUMN_LAST_NAME)));
-                employee.setGender(cursor.getString(cursor.getColumnIndex(EmployeeDBHandler.COLUMN_GENDER)));
-                employee.setHireDate(cursor.getString(cursor.getColumnIndex(EmployeeDBHandler.COLUMN_HIRE_DATE)));
-                employee.setDept(cursor.getString(cursor.getColumnIndex(EmployeeDBHandler.COLUMN_DEPT)));
+                employee.setEmail(cursor.getString(cursor.getColumnIndex(EmployeeDBHandler.COLUMN_EMAIL)));
+                employee.setMobile(cursor.getString(cursor.getColumnIndex(EmployeeDBHandler.COLUMN_MOBILE)));
                 employees.add(employee);
             }
         }
@@ -108,10 +102,8 @@ public class EmployeeOperations {
         open();
         ContentValues values = new ContentValues();
         values.put(EmployeeDBHandler.COLUMN_FIRST_NAME, employee.getFirstName());
-        values.put(EmployeeDBHandler.COLUMN_LAST_NAME, employee.getLastName());
-        values.put(EmployeeDBHandler.COLUMN_GENDER, employee.getGender());
-        values.put(EmployeeDBHandler.COLUMN_HIRE_DATE, employee.getHireDate());
-        values.put(EmployeeDBHandler.COLUMN_DEPT, employee.getDept());
+        values.put(EmployeeDBHandler.COLUMN_EMAIL, employee.getEmail());
+        values.put(EmployeeDBHandler.COLUMN_MOBILE, employee.getMobile());
 
         //Updating Row
         return database.update(EmployeeDBHandler.TABLE_EMPLOYEES, values,

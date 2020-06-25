@@ -75,29 +75,15 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
                 initializeEmployee(empId);
             }
 
-        calendarImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager manager = getSupportFragmentManager();
-                DatePickerFragment dialog = new DatePickerFragment();
-                dialog.show(manager, DIALOG_DATE);
-            }
-        });
+
         addUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 employeeData.open();
-                if (mode != null) {
-                    if (mode.equals("Add")) {
-                        newEmployee.setFirstName(firstNameEditText.getText().toString());
-                        newEmployee.setLastName(lastNameEditText.getText().toString());
-                        newEmployee.setHireDate(hireDateEditText.getText().toString());
-                        newEmployee.setDept(deptEditText.getText().toString());
-                        if (maleRadioButton.isChecked())
-                            newEmployee.setGender("M");
-                        else
-                            newEmployee.setGender("F");
 
+                        newEmployee.setFirstName(firstNameEditText.getText().toString());
+                        newEmployee.setEmail(lastNameEditText.getText().toString());
+                        newEmployee.setMobile(deptEditText.getText().toString());
 
                         employeeData.addEmployee(newEmployee);
                         employeeData.close();
@@ -105,19 +91,6 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
                                 " is added successfully!", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(AddUpdateEmployee.this, MainActivity.class);
                         startActivity(i);
-                    } else {
-                        oldEmployee.setFirstName(firstNameEditText.getText().toString());
-                        oldEmployee.setLastName(lastNameEditText.getText().toString());
-                        oldEmployee.setHireDate(hireDateEditText.getText().toString());
-                        oldEmployee.setDept(deptEditText.getText().toString());
-                        employeeData.updateEmployee(oldEmployee);
-                        employeeData.close();
-                        Toast.makeText(AddUpdateEmployee.this, "Employee " + oldEmployee.getFirstName() +
-                                " is added successfully!", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(AddUpdateEmployee.this, MainActivity.class);
-                        startActivity(i);
-                    }
-                }
             }
         });
     }
@@ -126,10 +99,8 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
         oldEmployee = employeeData.getEmployee(empId);
         if (oldEmployee != null) {
             firstNameEditText.setText(oldEmployee.getFirstName());
-            lastNameEditText.setText(oldEmployee.getLastName());
-            hireDateEditText.setText(oldEmployee.getHireDate());
-            //radioGroup.check(oldEmployee.getGender().equals("M") ? R.id.radio_male : R.id.radio_female);
-            deptEditText.setText(oldEmployee.getDept());
+            lastNameEditText.setText(oldEmployee.getEmail());
+            deptEditText.setText(oldEmployee.getMobile());
         } else {
             Toast.makeText(this, "Employee not Present", Toast.LENGTH_SHORT).show();
         }
