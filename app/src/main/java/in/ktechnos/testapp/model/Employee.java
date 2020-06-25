@@ -71,7 +71,7 @@ public class Employee {
 
 
     public String toString() {
-        return "Emp id: " + getEmpId() + "\n" + "Name: " + getFirstName()+"\n" + " Email:" + getEmail() + "\n" + "Mobile: " + getMobile();
+        return "Emp id: " + getEmpId() + "\n" + "Name: " + getFirstName()+"\n" + "Email:" + getEmail() + "\n" + "Mobile: " + getMobile();
     }
 
 }

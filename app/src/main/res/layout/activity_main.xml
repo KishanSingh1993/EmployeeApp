@@ -32,6 +32,19 @@
     <Button
         android:layout_marginTop="15dp"
         android:textAllCaps="false"
+        android:id="@+id/btn_view_employee"
+        android:text="View Employee List"
+        android:textColor="#fff"
+        android:layout_margin="10dp"
+        android:background="@drawable/search_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() ->mainviewModel.viewList()}"
+        />
+
+    <Button
+        android:layout_marginTop="15dp"
+        android:textAllCaps="false"
         android:id="@+id/btn_search_employee"
         android:text="Search Employee"
         android:textColor="#fff"

@@ -7,6 +7,7 @@ import android.content.Intent;
 import androidx.lifecycle.ViewModel;
 
 import in.ktechnos.testapp.view.AddUpdateEmployee;
+import in.ktechnos.testapp.view.SearchEmployee;
 import in.ktechnos.testapp.view.ViewAllEmployees;
 
 public class MainViewModel extends ViewModel {
@@ -18,9 +19,13 @@ public class MainViewModel extends ViewModel {
 
     }
 
-    public void goToSearch(){
+    public void viewList(){
 
         context.startActivity(new Intent(context, ViewAllEmployees.class));
+    }
+
+    public void goToSearch(){
+        context.startActivity(new Intent(context, SearchEmployee.class));
     }
 
     public void goToAdd(){
